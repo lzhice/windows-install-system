@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include=".\src\akali.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\base64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\buffer_queue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\display_monitors.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\driver_info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\file_info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\file_util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\ini.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\md5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\os_ver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\pc_info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\process.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\process_util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\process_win.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\registry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\schedule_task.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\shortcut.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\stringencode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\timeutils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\trace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\win_service_base.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include=".\src\win_service_installer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cmdline_parse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\include\akali.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\akali_export.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\arch.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\base64.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\buffer_queue.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\byteorder.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\constructormagic.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\criticalsection.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\deprecation.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\display_monitors.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\driver_info.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\endianess_detect.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\file_info.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\file_util.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\filesystem.hpp">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\ini.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\macros.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\md5.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\noncopyable.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\os_ver.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\pc_info.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\process.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\process_util.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\registry.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\schedule_task.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\shortcut.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\singleton.hpp">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\string_helper.hpp">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\stringencode.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\timer.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\timeutils.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\trace.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\win_service_base.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include=".\include\akali\win_service_installer.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+    <ClInclude Include="include\akali\cmdline_parse.h">
+      <Filter>Header Files\akali</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{9DA48C08-51DB-3D49-A1F3-65536AB96605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\akali">
+      <UniqueIdentifier>{CDB309C4-51DB-3541-A827-66534FA97C13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{0BA75D9A-FF38-3110-BB7B-EAA6A2B4607F}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

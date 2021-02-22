@@ -1,0 +1,55 @@
+﻿{
+  "core": {
+    "product_name": "CSI",
+    "setup_version": "1.0.0.1",
+    "default_install_folder": "%current_user_appdata%CSI"
+  },
+  "ui": {
+    "option_dialog": {
+      "install_folder_suffix": "",
+      "need_disk_space_by_mb": "100"
+    },
+    "progress_dialog": {
+    },
+    "finish_dialog": {
+    }
+  },
+  "shortcut": [
+    {
+      "lnk_path": "%current_user_desktop%Firefox.lnk",
+      "icon_path": "%install_folder%firefox.exe",
+      "target_path": "%install_folder%firefox.exe",
+      "uninstall_included": true
+    },
+    {
+      "lnk_path": "%current_user_programs%Firefox.lnk",
+      "icon_path": "%install_folder%Firefox.exe",
+      "target_path": "%install_folder%Firefox.exe",
+      "uninstall_included": true
+    },
+    {
+      "lnk_path": "%current_user_programs%Uninstall Firefox.lnk",
+      "icon_path": "%install_folder%%uninstaller_fullname%",
+      "target_path": "%install_folder%%uninstaller_fullname%",
+      "uninstall_included": true
+    }
+  ],
+  "register": [
+    {
+      "root_key": "HKEY_CURRENT_USER",
+      "sub_key": "SOFTWARE\\CSI",
+      "WOW6432Node": false,
+      "item": "path",
+      "value": "%install_folder%",
+      "uninstall_included":  true
+    }
+  ],
+  "uninstall": {
+    "reg_key_name": "CSI",
+    "display_name": "CSI",
+    "publisher": "XXX",
+    "about_link_url": "https://www.this-is-sample.com",
+    "help_link_url": "https://www.this-is-sample.com",
+    "uninstall_exe_path": "%install_folder%%uninstaller_fullname%"
+  }
+}

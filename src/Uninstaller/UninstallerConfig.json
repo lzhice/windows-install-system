@@ -1,0 +1,17 @@
+﻿{
+  "core": {
+    "product_name": "CSI",
+    "setup_version": "1.0.0.1"
+  },
+  "ui": {
+    "option_dialog": {
+      "title": ""
+    },
+    "progress_dialog": {
+      "title": ""
+    },
+    "finish_dialog": {
+      "title": ""
+    }
+  }
+}
