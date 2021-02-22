@@ -1,17 +1,17 @@
-﻿{
+{
   "core": {
-    "product_name": "CSI",
+    "product_name": "WIS Sample",
     "setup_version": "1.0.0.1"
   },
   "ui": {
     "option_dialog": {
-      "title": ""
+      "title": "Uninstall WIS Sample"
     },
     "progress_dialog": {
-      "title": ""
+      "title": "Removing..."
     },
     "finish_dialog": {
-      "title": ""
+      "title": "Finished"
     }
   }
 }

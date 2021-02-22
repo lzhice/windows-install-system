@@ -1,34 +1,37 @@
-﻿{
+{
   "core": {
-    "product_name": "CSI",
+    "product_name": "WSI-Sample",
     "setup_version": "1.0.0.1",
-    "default_install_folder": "%current_user_appdata%CSI"
+    "default_install_folder": "%current_user_appdata%wis-sample"
   },
   "ui": {
     "option_dialog": {
-      "install_folder_suffix": "",
-      "need_disk_space_by_mb": "100"
+      "title": "Setup 1",
+      "install_folder_suffix": "wis-sample",
+      "need_disk_space_by_mb": "7"
     },
     "progress_dialog": {
+      "title": "Setup 2"
     },
     "finish_dialog": {
+      "title": "Setup 3"
     }
   },
   "shortcut": [
     {
-      "lnk_path": "%current_user_desktop%Firefox.lnk",
-      "icon_path": "%install_folder%firefox.exe",
-      "target_path": "%install_folder%firefox.exe",
+      "lnk_path": "%current_user_desktop%WIS Sample.lnk",
+      "icon_path": "%install_folder%WIS-Sample.exe",
+      "target_path": "%install_folder%WIS-Sample.exe",
       "uninstall_included": true
     },
     {
-      "lnk_path": "%current_user_programs%Firefox.lnk",
-      "icon_path": "%install_folder%Firefox.exe",
-      "target_path": "%install_folder%Firefox.exe",
+      "lnk_path": "%current_user_programs%WIS Sample",
+      "icon_path": "%install_folder%WIS-Sample.exe",
+      "target_path": "%install_folder%WIS-Sample.exe",
       "uninstall_included": true
     },
     {
-      "lnk_path": "%current_user_programs%Uninstall Firefox.lnk",
+      "lnk_path": "%current_user_programs%Uninstall WIS Sample.lnk",
       "icon_path": "%install_folder%%uninstaller_fullname%",
       "target_path": "%install_folder%%uninstaller_fullname%",
       "uninstall_included": true
@@ -37,19 +40,19 @@
   "register": [
     {
       "root_key": "HKEY_CURRENT_USER",
-      "sub_key": "SOFTWARE\\CSI",
+      "sub_key": "SOFTWARE\\WIS-Sample",
       "WOW6432Node": false,
       "item": "path",
       "value": "%install_folder%",
-      "uninstall_included":  true
+      "uninstall_included": true
     }
   ],
   "uninstall": {
-    "reg_key_name": "CSI",
-    "display_name": "CSI",
-    "publisher": "XXX",
-    "about_link_url": "https://www.this-is-sample.com",
-    "help_link_url": "https://www.this-is-sample.com",
+    "reg_key_name": "WIS-Sample",
+    "display_name": "WIS Sample",
+    "publisher": "winsoft666",
+    "about_link_url": "https://github.com/winsoft666/windows-install-system",
+    "help_link_url": "https://github.com/winsoft666/windows-install-system",
     "uninstall_exe_path": "%install_folder%%uninstaller_fullname%"
   }
 }
