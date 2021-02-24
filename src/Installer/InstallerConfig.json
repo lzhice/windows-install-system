@@ -6,15 +6,15 @@
   },
   "ui": {
     "option_dialog": {
-      "title": "Setup 1",
+      "title": "WSI-Sample Setup",
       "install_folder_suffix": "wis-sample",
       "need_disk_space": "7M"
     },
     "progress_dialog": {
-      "title": "Setup 2"
+      "title": "WSI-Sample Setup"
     },
     "finish_dialog": {
-      "title": "Setup 3"
+      "title": "WSI-Sample Setup"
     }
   },
   "shortcut": [

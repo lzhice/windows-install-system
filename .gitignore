@@ -269,3 +269,6 @@ DebugUninst/
 ReleaseUninst/
 Uninst.exe
 *.aps
+src/3rd/zlib-1.2.11/contrib/masmx86/inffas32.lst
+
+src/3rd/zlib-1.2.11/contrib/masmx86/match686.lst
