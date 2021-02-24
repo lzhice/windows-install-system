@@ -51,8 +51,9 @@ void DlgOption::Notify(TNotifyUI& msg) {
       if (idl) {
         SHGetPathFromIDList(idl, szFolderPath);
         if (_tcslen(szFolderPath) > 0) {
-          PathCombineW(szFolderPath, szFolderPath,
-            PARSE(InstallerConfig::Instance()->GetOptionDlgCfg().installFolderSuffix).c_str());
+          PathCombineW(
+              szFolderPath, szFolderPath,
+              PARSE(InstallerConfig::Instance()->GetOptionDlgCfg().installFolderSuffix).c_str());
           pEditInstallPath_->SetText(szFolderPath);
           UpdateDriverInfo();
         }
@@ -112,16 +113,35 @@ void DlgOption::UpdateDriverInfo() {
   if (!pEditInstallPath_ || !pLblDiskInfo_)
     return;
 
-  int driver_avaliable_mb = 0;
+  int driverAvaliableMB = 0;
+  std::wstring strAaliable;
   std::wstring folder = TCHARToUnicode(pEditInstallPath_->GetText().GetData());
   if (folder.length() > 0) {
     int driver = akali::DriveInfo::GetDrive(folder.c_str());
-    driver_avaliable_mb = (int)akali::DriveInfo::GetFreeMB(driver);
+    driverAvaliableMB = (int)akali::DriveInfo::GetFreeMB(driver);
+
+    if (driverAvaliableMB >= 1048576) {  // 1T
+      float tb = (float)driverAvaliableMB / 1048576.f;
+      wchar_t szTMP[30];
+      StringCchPrintfW(szTMP, 30, L"%.1fT", tb);
+      strAaliable = szTMP;
+    }
+    else if (driverAvaliableMB >= 1024) {  // 1G
+      float tb = (float)driverAvaliableMB / 1024;
+      wchar_t szTMP[30];
+      StringCchPrintfW(szTMP, 30, L"%.1fG", tb);
+      strAaliable = szTMP;
+    }
+    else {
+      wchar_t szTMP[30];
+      StringCchPrintfW(szTMP, 30, L"%dG", driverAvaliableMB);
+      strAaliable = szTMP;
+    }
   }
 
   WCHAR szInfo[MAX_PATH];
-  StringCchPrintfW(szInfo, MAX_PATH, L"Need: %s, Avaliable: %dmb",
-    PARSE(InstallerConfig::Instance()->GetOptionDlgCfg().needDiskSpaceByMB).c_str(),
-                   driver_avaliable_mb);
+  StringCchPrintfW(szInfo, MAX_PATH, L"(%s/%s)",
+                   PARSE(InstallerConfig::Instance()->GetOptionDlgCfg().needDiskSpace).c_str(),
+                   strAaliable.c_str());
   pLblDiskInfo_->SetText(szInfo);
 }

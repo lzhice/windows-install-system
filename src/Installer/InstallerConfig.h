@@ -15,7 +15,7 @@ struct CoreConfig {
 struct OptionDialogConfig {
   std::wstring title;
   std::wstring installFolderSuffix;
-  std::wstring needDiskSpaceByMB;
+  std::wstring needDiskSpace;
 };
 
 struct ProgressDialogConfig {

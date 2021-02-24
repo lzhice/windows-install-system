@@ -1221,9 +1221,18 @@ namespace DuiLib {
             rcBorderSize = m_rcBorderSize;
         }
 
-        if( cxyBorderRound.cx > 0 || cxyBorderRound.cy > 0 ) {
-            CRenderClip roundClip;
-            CRenderClip::GenerateRoundClip(hDC, m_rcPaint,  m_rcItem, cxyBorderRound.cx, cxyBorderRound.cy, roundClip);
+        if (cxyBorderRound.cx > 0 || cxyBorderRound.cy > 0) {
+          CRenderClip roundClip;
+          CRenderClip::GenerateRoundClip(hDC, m_rcPaint, m_rcItem, cxyBorderRound.cx,
+                                         cxyBorderRound.cy, roundClip);
+          PaintBkColor(hDC);
+          PaintBkImage(hDC);
+          PaintStatusImage(hDC);
+          PaintForeColor(hDC);
+          PaintForeImage(hDC);
+          PaintText(hDC);
+          PaintBorder(hDC);
+          return true;
         }
 
         PaintBkColor(hDC);

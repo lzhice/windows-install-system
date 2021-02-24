@@ -268,7 +268,7 @@ bool InstallLogic::CreateShortcut(HWND hProgressWnd) {
       }
     }
     else {
-      akali::TraceMsgA("create shortcut failed: %s\n", akali::UnicodeToAnsi(i.lnkPath).c_str());
+      akali::TraceMsgW(L"create shortcut failed: %s\n", i.lnkPath.c_str());
       ret = false;
       break;
     }
@@ -304,7 +304,7 @@ bool InstallLogic::CreateRegister(HWND hProgressWnd) {
 
     assert(hKey);
     if (!hKey) {
-      akali::TraceMsgA("root key not support: %s\n", akali::UnicodeToAnsi(i.rootKey).c_str());
+      akali::TraceMsgW(L"root key not support: %s\n", i.rootKey.c_str());
       ret = false;
       break;
     }
@@ -317,8 +317,7 @@ bool InstallLogic::CreateRegister(HWND hProgressWnd) {
     if (i.WOW6432Node)
       regsam |= KEY_WOW64_32KEY;
     if (ERROR_SUCCESS != reg.Open(regsam, true)) {
-      akali::TraceMsgA("open register failed: %s %s\n", akali::UnicodeToAnsi(i.rootKey).c_str(),
-                       akali::UnicodeToAnsi(i.subKey).c_str());
+      akali::TraceMsgW(L"open register failed: %s %s\n", i.rootKey.c_str(), i.subKey.c_str());
       ret = false;
       break;
     }
@@ -332,16 +331,15 @@ bool InstallLogic::CreateRegister(HWND hProgressWnd) {
     }
     else {
       assert(false);
-      akali::TraceMsgA("reg value type not support: %d\n", i.value.type);
+      akali::TraceMsgW(L"reg value type not support: %d\n", i.value.type);
       ret = false;
       break;
     }
     reg.Close();
 
     if (hr != S_OK) {
-      akali::TraceMsgA(
-          "set register value failed: %s %s %s\n", akali::UnicodeToAnsi(i.rootKey).c_str(),
-          akali::UnicodeToAnsi(strSubKey).c_str(), akali::UnicodeToAnsi(strItem).c_str());
+      akali::TraceMsgW(L"set register value failed: %s %s %s\n", i.rootKey.c_str(),
+                       strSubKey.c_str(), strItem.c_str());
       ret = false;
       break;
     }

@@ -8,7 +8,7 @@
     "option_dialog": {
       "title": "Setup 1",
       "install_folder_suffix": "wis-sample",
-      "need_disk_space_by_mb": "7"
+      "need_disk_space": "7M"
     },
     "progress_dialog": {
       "title": "Setup 2"

@@ -89,8 +89,8 @@ void InstallerConfig::LoadJSON() {
         if (root["ui"]["option_dialog"].isMember("install_folder_suffix"))
           optionDialogConfig_.installFolderSuffix =
               Utf8ToUnicode(root["ui"]["option_dialog"]["install_folder_suffix"].asString());
-        optionDialogConfig_.needDiskSpaceByMB =
-            Utf8ToUnicode(root["ui"]["option_dialog"]["need_disk_space_by_mb"].asString());
+        optionDialogConfig_.needDiskSpace =
+            Utf8ToUnicode(root["ui"]["option_dialog"]["need_disk_space"].asString());
         optionDialogConfig_.title = Variable::Instance()->Parse(
             Utf8ToUnicode(root["ui"]["option_dialog"]["title"].asString()));
       }

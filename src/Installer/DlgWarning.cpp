@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "DlgWarning.h"
+#include "resource.h"
 
 DlgWarning::DlgWarning(const CDuiString& title, const CDuiString& msg, bool hasCancelButton)
     : pBtnClose_(NULL)
@@ -21,7 +22,7 @@ WarningDialogClicked DlgWarning::ShowWarning(HWND hParent,
   if (dlg_warning.Create(hParent,
                          PARSE(InstallerConfig::Instance()->GetCoreCfg().productName).c_str(),
                          UI_WNDSTYLE_DIALOG, 0)) {
-    //dlg_warning.SetIcon(IDI_ICON_LOGO);
+    dlg_warning.SetIcon(IDI_ICON_LOGO);
     dlg_warning.CenterWindow();
     ret = (WarningDialogClicked)dlg_warning.ShowModal();
   }
