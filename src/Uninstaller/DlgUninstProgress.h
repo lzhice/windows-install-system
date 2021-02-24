@@ -11,7 +11,7 @@
 #define WUM_REMOVE_REGISTER_FAILED (WM_USER + 1005)
 
 struct RemoveProgress {
-  std::wstring item;
+  std::wstring msg;
   unsigned int cur;
   unsigned int total;
 };

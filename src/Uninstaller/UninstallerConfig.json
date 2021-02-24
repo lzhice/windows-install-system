@@ -8,10 +8,10 @@
       "title": "Uninstall WIS Sample"
     },
     "progress_dialog": {
-      "title": "Removing..."
+      "title": "Uninstall WIS Sample"
     },
     "finish_dialog": {
-      "title": "Finished"
+      "title": "Uninstall WIS Sample"
     }
   }
 }

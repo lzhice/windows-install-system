@@ -138,7 +138,7 @@ bool UninstallLogic::RemoveFile(HWND hProgressWnd) {
       else {
         if (hProgressWnd) {
           RemoveProgress* pRP = new RemoveProgress();
-          pRP->item = i;
+          pRP->msg = L"Remove: " + i;
           pRP->cur = ++cur;
           pRP->total = total;
           ::PostMessage(hProgressWnd, WUM_REMOVE_PROGRESS, (WPARAM)pRP, 0);
@@ -161,20 +161,12 @@ bool UninstallLogic::RemoveFile(HWND hProgressWnd) {
     else {
       if (hProgressWnd) {
         RemoveProgress* pRP = new RemoveProgress();
-        pRP->item = i;
+        pRP->msg = L"Remove: " + i;
         pRP->cur = ++cur;
         pRP->total = total;
         ::PostMessage(hProgressWnd, WUM_REMOVE_PROGRESS, (WPARAM)pRP, 0);
       }
     }
-  }
-
-  if (hProgressWnd) {
-    RemoveProgress* pRP = new RemoveProgress();
-    pRP->item = L"";
-    pRP->cur = cur;
-    pRP->total = total;
-    ::PostMessage(hProgressWnd, WUM_REMOVE_PROGRESS, (WPARAM)pRP, 0);
   }
 
   return ret;

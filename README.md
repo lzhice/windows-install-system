@@ -1,9 +1,9 @@
-# 1. WIS
+# 1. About
 WIS (Windows Install System) is an open source system to create Windows installers.
 
 ---
 
-## 2 Installer
+## 2. Installer
 ## 2.1 Logo
 ```txt
 <windows-install-system>\src\Installer\logo.ico
@@ -19,7 +19,7 @@ WIS (Windows Install System) is an open source system to create Windows installe
 <windows-install-system>\src\Installer\resource.h
 ```
 
-## 2.4 InstallerConfig.json
+## 2.4 [InstallerConfig.json](src\Install\InstallerConfig.json)
 The InstallerConfig.json file is located on `<windows-install-system>\src\Installer\InstallerConfig.json`.
 The config file supports for using predefined varibales(See [4.Predefined variable](#-4.-Predefined-variable)).
 
@@ -37,13 +37,16 @@ The config file supports for using predefined varibales(See [4.Predefined variab
 <windows-install-system>\src\Uninstaller\resource.h
 ```
 
-## 3.3 UninstallerConfig.json
+## 3.3 [UninstallerConfig.json](src\Uninstaller\UninstallerConfig.json)
 The UninstallerConfig.json file is located on `<windows-install-system>\src\Uninstaller\UninstallerConfig.json`.
 The config file also supports for using predefined varibales(See [4.Predefined variable](#-4.-Predefined-variable)).
 
+---
 
 # 4. Predefined variable
-> - All of variables are lowercase, no space, underline style.
+All of variables are defined in `Variable` project, Follow these rules:
+
+> - Lowercase, no space, underline style.
 > - Using %% for %.
 > - All of directories end with `\`.
 
@@ -87,3 +90,38 @@ The config file also supports for using predefined varibales(See [4.Predefined v
 - uninstaller_fullname
   
   Uninstaller exe file name(with file extension), such as `Uninst.exe`.
+  
+---
+
+## 5. Command line parameter
+Installer support these startup parameter:
+- `/S`: silent install(no any UI or error message) 
+
+```bash
+WIS-Sample-Installer.exe /S
+```
+
+- `/D`: install folder
+
+```bash
+WIS-Sample-Installer.exe /D "D:\test folder\wis"
+```
+
+Uninstaller only support `/S` startup parameter.
+  
+## 6. Screenshot of sample
+> **All UI elements can be customized.**
+
+### 6.1 Installer UI
+![Installer-Step-1](Screenshot/Installer-1.png)
+
+![Installer-Step-2](Screenshot/Installer-2.png)
+
+![Installer-Step-3](Screenshot/Installer-3.png)
+
+### 6.2 Uninstaller UI
+![Uninstaller-Step-1](Screenshot/Uninstaller-1.png)
+
+![Uninstaller-Step-2](Screenshot/Uninstaller-2.png)
+
+![Uninstaller-Step-3](Screenshot/Uninstaller-3.png)

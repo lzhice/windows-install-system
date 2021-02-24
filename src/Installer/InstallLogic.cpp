@@ -160,7 +160,7 @@ bool InstallLogic::ExtractFiles(HWND hProgressWnd) {
             extractFiles.append(akali::UnicodeToUtf8(item));
             if (hProgressWnd) {
               ExtractProgress* pEP = new ExtractProgress();
-              pEP->item = item;
+              pEP->msg = L"Extract: " + item;
               pEP->cur = cur;
               pEP->total = total;
 

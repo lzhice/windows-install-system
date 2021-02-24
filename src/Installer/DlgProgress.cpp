@@ -66,9 +66,7 @@ LRESULT DlgProgress::HandleCustomMessage(UINT uMsg, WPARAM wParam, LPARAM lParam
       }
 
       if (pLblDetail_) {
-        WCHAR szDetail[251];
-        StringCchPrintfW(szDetail, 251, TEXT("Extract: %s"), pEP->item.c_str());
-        pLblDetail_->SetText(szDetail);
+        pLblDetail_->SetText(pEP->msg.c_str());
       }
 
       delete pEP;

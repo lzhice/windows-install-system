@@ -12,7 +12,7 @@
 #define WUM_CREATE_SHORTCUT_FAILED (WM_USER + 1006)
 
 struct ExtractProgress {
-  std::wstring item;
+  std::wstring msg;
   unsigned int cur;
   unsigned int total;
 };

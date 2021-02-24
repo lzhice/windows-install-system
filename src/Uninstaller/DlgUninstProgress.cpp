@@ -65,9 +65,7 @@ LRESULT DlgUninstProgress::HandleCustomMessage(UINT uMsg, WPARAM wParam, LPARAM 
       }
 
       if (pLblDetail_) {
-        WCHAR szDetail[251];
-        StringCchPrintfW(szDetail, 251, TEXT("Remove: %s"), pRP->item.c_str());
-        pLblDetail_->SetText(szDetail);
+        pLblDetail_->SetText(pRP->msg.c_str());
       }
 
       SAFE_DELETE(pRP);
