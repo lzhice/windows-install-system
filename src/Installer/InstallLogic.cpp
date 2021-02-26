@@ -52,19 +52,34 @@ void InstallLogic::DoSilentInstall() {
   Variable::Instance()->SetInstallFolder(strInstallFolder_);
 
   if (!CreateInstallFolder(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"CreateInstallFolder failed\n");
     return;
   }
   if (!ExtractFiles(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"ExtractFiles failed\n");
     return;
   }
   if (!CreateUninstallInfo(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"CreateUninstallInfo failed\n");
   }
   if (!CreateShortcut(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"CreateShortcut failed\n");
   }
   if (!CreateRegister(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"CreateRegister failed\n");
   }
-
   if (!WriteInstallRecord(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"WriteInstallRecord failed\n");
+  }
+  if (!ExecuteCmd(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"ExecuteCmd failed\n");
   }
 }
 
@@ -84,22 +99,39 @@ void InstallLogic::DoUnSilentInstall() {
   DlgProgress dlgProgress([this](HWND hProgressWnd) {
     workThread_ = std::thread([hProgressWnd, this]() {
       if (!CreateInstallFolder(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"CreateInstallFolder failed\n");
         return;
       }
       if (!ExtractFiles(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"ExtractFiles failed\n");
         return;
       }
       if (!ExtractUninst(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"ExtractUninst failed\n");
       }
       if (!CreateUninstallInfo(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"CreateUninstallInfo failed\n");
       }
       if (!CreateShortcut(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"CreateShortcut failed\n");
       }
       if (!CreateRegister(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"CreateRegister failed\n");
       }
-
       if (!WriteInstallRecord(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"WriteInstallRecord failed\n");
       }
+	  if (!ExecuteCmd(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"ExecuteCmd failed\n");
+	  }
 
       assert(hProgressWnd);
       ::PostMessage(hProgressWnd, WM_CLOSE, DLG_CLOSE_REASON::CONTINUE, 0);
@@ -355,6 +387,34 @@ bool InstallLogic::CreateRegister(HWND hProgressWnd) {
   }
 
   root_["register"] = registers;
+
+  return ret;
+}
+
+bool InstallLogic::ExecuteCmd(HWND hProgressWnd) {
+  bool ret = true;
+
+  for (auto& i : InstallerConfig::Instance()->GetExecutorCfgs()) {
+    TCHAR szCmd[MAX_PATH];
+    StringCchPrintfW(szCmd, MAX_PATH, L"%s %s", PARSE(i.cmd).c_str(), PARSE(i.parameter).c_str());
+
+    STARTUPINFOW si = {sizeof(si)};
+    PROCESS_INFORMATION pi = {NULL};
+    BOOL bCPRet =
+        CreateProcess(NULL, szCmd, NULL, NULL, FALSE, 0, NULL, PARSE(i.workingDir).c_str(), &si, &pi);
+    assert(bCPRet);
+    if (!bCPRet) {
+      ret = false;
+      akali::TraceMsgW(L"create process failed: %s, GLE: %d\n", szCmd, GetLastError());
+      break;
+    }
+
+    if (i.waitExit) {
+      WaitForSingleObject(pi.hProcess, INFINITE);
+    }
+    SAFE_CLOSE(pi.hThread);
+    SAFE_CLOSE(pi.hProcess);
+  }
 
   return ret;
 }

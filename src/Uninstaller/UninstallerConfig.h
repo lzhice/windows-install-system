@@ -23,6 +23,15 @@ struct FinishDialogConfig {
   std::wstring title;
 };
 
+struct ExecutorConfig {
+  bool waitExit;
+  std::wstring cmd;
+  std::wstring workingDir;
+  std::wstring parameter;
+
+  ExecutorConfig() { waitExit = false; }
+};
+
 
 class UninstallerConfig : public akali::Singleton<UninstallerConfig> {
  public:
@@ -32,6 +41,7 @@ class UninstallerConfig : public akali::Singleton<UninstallerConfig> {
   OptionDialogConfig GetOptionDlgCfg();
   ProgressDialogConfig GetProgressDlgCfg();
   FinishDialogConfig GetFinishDlgCfg();
+  std::vector<ExecutorConfig> GetExecutorCfgs();
 
  private:
    UninstallerConfig();
@@ -41,6 +51,7 @@ class UninstallerConfig : public akali::Singleton<UninstallerConfig> {
   OptionDialogConfig optionDialogConfig_;
   ProgressDialogConfig progressDialogConfig_;
   FinishDialogConfig finishDialogConfig_;
+  std::vector<ExecutorConfig> executorConfigs_;
 
   SINGLETON_CLASS_DECLARE(UninstallerConfig);
 };

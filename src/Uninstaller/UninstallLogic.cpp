@@ -41,18 +41,33 @@ void UninstallLogic::Run() {
 }
 
 void UninstallLogic::DoSilentUninstall() {
+  if (!ExecuteCmd(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"ExecuteCmd failed\n");
+  }
   if (!RemoveFile(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"RemoveFile failed\n");
   }
   if (!RemoveShortcut(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"RemoveShortcut failed\n");
   }
   if (!RemoveRegister(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"RemoveRegister failed\n");
   }
   if (!RemoveUninstallInfo(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"RemoveUninstallInfo failed\n");
   }
   if (!RemoveInstallRecord(NULL)) {
+    assert(false);
+    akali::TraceMsgW(L"RemoveInstallRecord failed\n");
   }
   if (!RemoveSelf()) {
-    TraceMsgW(L"remove self failed");
+    assert(false);
+    akali::TraceMsgW(L"RemoveSelf failed\n");
   }
 }
 
@@ -69,17 +84,31 @@ void UninstallLogic::DoUnSilentUninstall() {
 
   DlgUninstProgress dlgProgress([this](HWND hProgressWnd) {
     workThread_ = std::thread([hProgressWnd, this]() {
+      if (!ExecuteCmd(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"ExecuteCmd failed\n");
+      }
       if (!RemoveFile(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"RemoveFile failed\n");
         return;
       }
       if (!RemoveShortcut(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"RemoveShortcut failed\n");
         return;
       }
       if (!RemoveRegister(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"RemoveRegister failed\n");
       }
       if (!RemoveUninstallInfo(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"RemoveUninstallInfo failed\n");
       }
       if (!RemoveInstallRecord(hProgressWnd)) {
+        assert(false);
+        akali::TraceMsgW(L"RemoveInstallRecord failed\n");
       }
 
       assert(hProgressWnd);
@@ -108,7 +137,7 @@ void UninstallLogic::DoUnSilentUninstall() {
   }
 
   if (!RemoveSelf()) {
-    TraceMsgW(L"remove self failed");
+    TraceMsgW(L"RemoveSelf failed\n");
   }
 }
 
@@ -240,6 +269,34 @@ bool UninstallLogic::RemoveUninstallInfo(HWND hProgressWnd) {
 
 bool UninstallLogic::RemoveInstallRecord(HWND hProgressWnd) {
   return InstallRecord::Instance()->RemoveRecordFile();
+}
+
+bool UninstallLogic::ExecuteCmd(HWND hProgressWnd) {
+  bool ret = true;
+
+  for (auto& i : UninstallerConfig::Instance()->GetExecutorCfgs()) {
+    TCHAR szCmd[MAX_PATH];
+    StringCchPrintfW(szCmd, MAX_PATH, L"%s %s", PARSE(i.cmd).c_str(), PARSE(i.parameter).c_str());
+
+    STARTUPINFOW si = {sizeof(si)};
+    PROCESS_INFORMATION pi = {NULL};
+    BOOL bCPRet = CreateProcess(NULL, szCmd, NULL, NULL, FALSE, 0, NULL,
+                                PARSE(i.workingDir).c_str(), &si, &pi);
+    assert(bCPRet);
+    if (!bCPRet) {
+      ret = false;
+      akali::TraceMsgW(L"create process failed: %s, GLE: %d\n", szCmd, GetLastError());
+      break;
+    }
+
+    if (i.waitExit) {
+      WaitForSingleObject(pi.hProcess, INFINITE);
+    }
+    SAFE_CLOSE(pi.hThread);
+    SAFE_CLOSE(pi.hProcess);
+  }
+
+  return ret;
 }
 
 bool UninstallLogic::RemoveSelf() {

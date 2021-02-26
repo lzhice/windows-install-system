@@ -36,6 +36,10 @@ std::vector<RegisterConfig> InstallerConfig::GetRegisterCfgs() {
   return registerConfigs_;
 }
 
+std::vector<ExecutorConfig> InstallerConfig::GetExecutorCfgs() {
+  return executorConfigs_;
+}
+
 UninstallConfig InstallerConfig::GetUninstallCfg() {
   return uninstallConfig_;
 }
@@ -151,6 +155,22 @@ void InstallerConfig::LoadJSON() {
         }
 
         registerConfigs_.push_back(rc);
+      }
+    }
+  } catch (std::exception& e) {
+    TraceMsgA("installer config json parse exception: %s\n", e.what() ? e.what() : "");
+  }
+
+  try {
+    if (root.isMember("executor") && root["executor"].isArray()) {
+      for (Json::ArrayIndex i = 0; i < root["executor"].size(); i++) {
+        Json::Value tmp = root["executor"][i];
+        ExecutorConfig ec;
+        ec.cmd = Utf8ToUnicode(tmp["cmd"].asString());
+        ec.workingDir = Utf8ToUnicode(tmp["working_dir"].asString());
+        ec.parameter = Utf8ToUnicode(tmp["parameter"].asString());
+        ec.waitExit = tmp["wait_exit"].asBool();
+        executorConfigs_.push_back(ec);
       }
     }
   } catch (std::exception& e) {

@@ -21,6 +21,7 @@ private:
   bool CreateShortcut(HWND hProgressWnd);
   bool CreateRegister(HWND hProgressWnd);
   bool WriteInstallRecord(HWND hProgressWnd);
+  bool ExecuteCmd(HWND hProgressWnd);
   bool IsUrl(const std::wstring &str);
 private:
   HINSTANCE hInst_;

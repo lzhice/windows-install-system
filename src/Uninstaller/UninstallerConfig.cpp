@@ -28,6 +28,10 @@ FinishDialogConfig UninstallerConfig::GetFinishDlgCfg() {
   return finishDialogConfig_;
 }
 
+std::vector<ExecutorConfig> UninstallerConfig::GetExecutorCfgs() {
+  return executorConfigs_;
+}
+
 void UninstallerConfig::LoadJSON() {
   HRSRC hResource = FindResource(GetModuleHandle(NULL),
                                  MAKEINTRESOURCE(IDR_JSON_UNINSTALLER_CONFIG), TEXT("JSON"));
@@ -58,7 +62,7 @@ void UninstallerConfig::LoadJSON() {
   Json::CharReader* reader = readerBuilder.newCharReader();
   Json::String err;
   if (!reader->parse((const char*)pData, ((const char*)pData + dwSize), &root, &err)) {
-    TraceMsgA("installer config json parse failed: %s\n", err.c_str());
+    TraceMsgA("uninstaller config json parse failed: %s\n", err.c_str());
     return;
   }
 
@@ -66,7 +70,7 @@ void UninstallerConfig::LoadJSON() {
     coreConfig_.productName = Utf8ToUnicode(root["core"]["product_name"].asString());
     coreConfig_.setupVersion = Utf8ToUnicode(root["core"]["setup_version"].asString());
   } catch (std::exception& e) {
-    TraceMsgA("installer config json parse exception: %s\n", e.what() ? e.what() : "");
+    TraceMsgA("uninstaller config json parse exception: %s\n", e.what() ? e.what() : "");
   }
 
   try {
@@ -85,6 +89,22 @@ void UninstallerConfig::LoadJSON() {
       }
     }
   } catch (std::exception& e) {
-    TraceMsgA("installer config json parse exception: %s\n", e.what() ? e.what() : "");
+    TraceMsgA("uninstaller config json parse exception: %s\n", e.what() ? e.what() : "");
+  }
+
+  try {
+    if (root.isMember("executor") && root["executor"].isArray()) {
+      for (Json::ArrayIndex i = 0; i < root["executor"].size(); i++) {
+        Json::Value tmp = root["executor"][i];
+        ExecutorConfig ec;
+        ec.cmd = Utf8ToUnicode(tmp["cmd"].asString());
+        ec.workingDir = Utf8ToUnicode(tmp["working_dir"].asString());
+        ec.parameter = Utf8ToUnicode(tmp["parameter"].asString());
+        ec.waitExit = tmp["wait_exit"].asBool();
+        executorConfigs_.push_back(ec);
+      }
+    }
+  } catch (std::exception& e) {
+    TraceMsgA("uninstaller config json parse exception: %s\n", e.what() ? e.what() : "");
   }
 }

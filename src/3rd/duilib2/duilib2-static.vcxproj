@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{62A71EF8-33E1-3D16-A266-579CFB22C839}</ProjectGuid>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>Win32</Platform>
     <ProjectName>duilib2-static</ProjectName>
@@ -141,7 +141,6 @@
     <ClInclude Include=".\Control\UIDateTime.h" />
     <ClInclude Include=".\Control\UIEdit.h" />
     <ClInclude Include=".\Control\UIFadeButton.h" />
-    <ClInclude Include=".\Control\UIFlash.h" />
     <ClInclude Include=".\Control\UIGifAnim.h" />
     <ClInclude Include=".\Control\UIGroupBox.h" />
     <ClInclude Include=".\Control\UIHotKey.h" />
@@ -200,7 +199,6 @@
     <ClCompile Include=".\Control\UIDateTime.cpp" />
     <ClCompile Include=".\Control\UIEdit.cpp" />
     <ClCompile Include=".\Control\UIFadeButton.cpp" />
-    <ClCompile Include=".\Control\UIFlash.cpp" />
     <ClCompile Include=".\Control\UIGifAnim.cpp" />
     <ClCompile Include=".\Control\UIGroupBox.cpp" />
     <ClCompile Include=".\Control\UIHotKey.cpp" />

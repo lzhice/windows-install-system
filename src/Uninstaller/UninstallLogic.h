@@ -15,6 +15,7 @@ private:
   bool RemoveRegister(HWND hProgressWnd);
   bool RemoveUninstallInfo(HWND hProgressWnd);
   bool RemoveInstallRecord(HWND hProgressWnd);
+  bool ExecuteCmd(HWND hProgressWnd);
   bool RemoveSelf();
 private:
   HINSTANCE hInst_;

@@ -31,9 +31,6 @@
     <ClCompile Include=".\Control\UIFadeButton.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
-    <ClCompile Include=".\Control\UIFlash.cpp">
-      <Filter>Source Files\Control</Filter>
-    </ClCompile>
     <ClCompile Include=".\Control\UIGifAnim.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
@@ -196,9 +193,6 @@
       <Filter>Header Files\Control</Filter>
     </ClInclude>
     <ClInclude Include=".\Control\UIFadeButton.h">
-      <Filter>Header Files\Control</Filter>
-    </ClInclude>
-    <ClInclude Include=".\Control\UIFlash.h">
       <Filter>Header Files\Control</Filter>
     </ClInclude>
     <ClInclude Include=".\Control\UIGifAnim.h">

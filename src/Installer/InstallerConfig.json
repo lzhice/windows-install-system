@@ -47,6 +47,14 @@
       "uninstall_included": true
     }
   ],
+  "executor": [
+    {
+      "cmd": "%install_folder%WIS-Sample.exe",
+      "working_dir": "%install_folder%",
+      "parameter": "",
+      "wait_exit": false
+    }
+  ],
   "uninstall": {
     "reg_key_name": "WIS-Sample",
     "display_name": "WIS Sample",

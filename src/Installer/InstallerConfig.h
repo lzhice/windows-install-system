@@ -33,14 +33,11 @@ struct ShortcutConfig {
   std::wstring targetPath;
   std::wstring workingDir;
 
-  ShortcutConfig() {
-    uninstallIncluded = true;
-  }
+  ShortcutConfig() { uninstallIncluded = true; }
 };
 
-
 struct RegValue {
-  unsigned int type; // REG_SZ REG_DWORD
+  unsigned int type;  // REG_SZ REG_DWORD
   std::wstring v1;
   DWORD v2;
 
@@ -64,6 +61,15 @@ struct RegisterConfig {
   }
 };
 
+struct ExecutorConfig {
+  bool waitExit;
+  std::wstring cmd;
+  std::wstring workingDir;
+  std::wstring parameter;
+
+  ExecutorConfig() { waitExit = false; }
+};
+
 struct UninstallConfig {
   std::wstring regKeyName;
   std::wstring displayName;
@@ -83,7 +89,8 @@ class InstallerConfig : public akali::Singleton<InstallerConfig> {
   FinishDialogConfig GetFinishDlgCfg();
   std::vector<ShortcutConfig> GetShortcutConfigs();
   std::vector<RegisterConfig> GetRegisterCfgs();
-  
+  std::vector<ExecutorConfig> GetExecutorCfgs();
+
   UninstallConfig GetUninstallCfg();
 
  private:
@@ -97,6 +104,7 @@ class InstallerConfig : public akali::Singleton<InstallerConfig> {
   UninstallConfig uninstallConfig_;
   std::vector<ShortcutConfig> shortcutConfigs_;
   std::vector<RegisterConfig> registerConfigs_;
+  std::vector<ExecutorConfig> executorConfigs_;
 
   SINGLETON_CLASS_DECLARE(InstallerConfig);
 };
